@@ -1,17 +1,27 @@
-import React from 'react';
-import {Dashboard} from './src/modules/dashboard/screens/Dashboard';
-import {AppContext} from './src/app/app-context';
-import {globalApplicationContext} from './src/app/globalState';
-import {QueryClientProvider} from '@tanstack/react-query';
-import {TYPES} from 'bvg-innovation-shared';
+import React, { Suspense } from 'react';
+import { AuthProvider } from './src/app/auth-provider';
+import AppNavigator from '_navigations/app.navigator';
+import { NetworkProvider } from './src/app/providers/NetworkProvider';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { ActivityIndicator } from 'react-native-paper';
 
 function App(): React.JSX.Element {
   return (
-    <QueryClientProvider client={TYPES.queryClient}>
-      <AppContext.Provider value={globalApplicationContext}>
-        <Dashboard />
-      </AppContext.Provider>
-    </QueryClientProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <KeyboardProvider>
+          <NetworkProvider>
+            <AuthProvider>
+              <Suspense fallback={<ActivityIndicator />}>
+                <AppNavigator />
+              </Suspense>
+            </AuthProvider>
+          </NetworkProvider>
+        </KeyboardProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 

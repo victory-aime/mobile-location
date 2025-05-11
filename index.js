@@ -1,15 +1,13 @@
 /**
  * @format
  */
-
 import * as React from 'react';
-import {AppRegistry} from 'react-native';
-import {DefaultTheme, PaperProvider} from 'react-native-paper';
-import {name as appName} from './app.json';
+import { AppRegistry } from 'react-native';
+import { DefaultTheme, PaperProvider } from 'react-native-paper';
+import { name as appName } from './app.json';
 import App from './App';
-import {QueryClientProvider} from '@tanstack/react-query';
-import {TYPES} from 'bvg-innovation-shared';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { TYPES } from 'bvg-innovation-shared';
 
 const theme = {
   ...DefaultTheme,
@@ -22,9 +20,11 @@ const theme = {
 
 export default function Main() {
   return (
-    <PaperProvider theme={theme}>
-      <App />
-    </PaperProvider>
+    <QueryClientProvider client={TYPES.queryClient}>
+      <PaperProvider theme={theme}>
+        <App />
+      </PaperProvider>
+    </QueryClientProvider>
   );
 }
 

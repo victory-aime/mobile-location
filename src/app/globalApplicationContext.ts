@@ -1,5 +1,5 @@
-import {APIS} from 'bvg-innovation-shared';
-import {ApplicationContext} from 'bvg-innovation-state-management';
+import { APIS } from 'bvg-innovation-shared';
+import { ApplicationContext } from 'bvg-innovation-state-management';
 
 /**
  * @class GlobalApplicationContext
@@ -22,7 +22,7 @@ export class GlobalApplicationContext extends ApplicationContext {
     return APIS(this.baseUrl);
   }
 
-  handleError(response: {status: number; message: string}) {
+  handleError(response: { status: number; message: string }) {
     if (response?.status === 401) {
       super.setRefreshToken('');
       super.setToken('');
@@ -32,7 +32,7 @@ export class GlobalApplicationContext extends ApplicationContext {
     }
   }
 
-  handleInfo(response: {data: any; status: number}) {
+  handleInfo(response: { data: any; status: number }) {
     const message = response?.data?.message;
     const status = response?.status;
     console.warn('message', message, 'success', status);

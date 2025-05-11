@@ -48,5 +48,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<!-- Ajout du schéma d'URL pour Keycloak -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>myapp</string> <!-- Correspond à ton redirectUrl -->
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
