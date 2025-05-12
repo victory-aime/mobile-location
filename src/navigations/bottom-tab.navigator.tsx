@@ -1,29 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { BottomNavigation } from 'react-native-paper';
-import Dashboard from '_modules/dashboard/screens/Dashboard';
-import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import { BottomNavigation, useTheme } from 'react-native-paper';
+import { BottomTabRouteParams } from '_types/navigations';
+import { BottomTabRoute } from '_navigations/route/bottom-tab';
+import { useTranslation } from 'react-i18next';
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator<BottomTabRouteParams>();
 
 export default function BottomTabNavigator() {
+  const theme = useTheme();
+  const { t } = useTranslation();
   return (
-    <Tab.Navigator
-      screenOptions={{}}
+    <BottomTab.Navigator
+      screenOptions={{
+        tabBarHideOnKeyboard: true,
+        headerShown: false,
+        unmountOnBlur: true,
+      }}
       tabBar={({ navigation, state, descriptors, insets }) => (
         <BottomNavigation.Bar
           navigationState={state}
           safeAreaInsets={insets}
-          style={styles.tabBarStyle}
+          style={{
+            height: 95,
+            backgroundColor: theme.colors.background,
+          }}
           onTabPress={({ route, preventDefault }) => {
             const event = navigation.emit({
               type: 'tabPress',
@@ -44,49 +45,38 @@ export default function BottomTabNavigator() {
             descriptors[route.key].options.tabBarIcon?.({
               focused,
               color,
-              size: 18,
+              size: 20,
             }) || null
           }
           getLabelText={({ route }) => {
             const { options } = descriptors[route.key];
             return typeof options.tabBarLabel === 'string'
-              ? options.tabBarLabel
+              ? t(options.tabBarLabel)
               : typeof options.title === 'string'
-              ? options.title
-              : route?.name;
+              ? t(options.title)
+              : t(route?.name);
           }}
         />
       )}
     >
-      <Tab.Screen
-        name="Home"
-        component={Dashboard}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialDesignIcons name="hoop-house" color={color} size={20} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <MaterialDesignIcons
-              name="keyboard-settings"
-              color={color}
-              size={20}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+      {BottomTabRoute.map((obj, index) => {
+        const title = t(obj.title) || '';
+        return (
+          <BottomTab.Screen
+            key={obj.title + index}
+            name={obj.route as keyof BottomTabRouteParams}
+            component={obj.viewComponent}
+            options={{
+              title,
+              headerShown: false,
+              unmountOnBlur: true,
+              tabBarIcon: ({ color, size }) =>
+                obj.icon &&
+                obj.icon({ fill: color, width: size, height: size }),
+            }}
+          />
+        );
+      })}
+    </BottomTab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBarStyle: {
-    height: 90,
-    backgroundColor: 'red',
-  },
-});

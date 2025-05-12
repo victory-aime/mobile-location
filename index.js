@@ -2,27 +2,23 @@
  * @format
  */
 import * as React from 'react';
-import { AppRegistry } from 'react-native';
-import { DefaultTheme, PaperProvider } from 'react-native-paper';
+import { AppRegistry, useColorScheme } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
 import { name as appName } from './app.json';
 import App from './App';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { TYPES } from 'bvg-innovation-shared';
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: 'tomato',
-    secondary: 'yellow',
-  },
-};
+import I18nProvider from './src/locales/i18nProvider';
+import { darkTheme, lightTheme } from '_theme/ThemeOverrides';
 
 export default function Main() {
+  const theme = useColorScheme();
   return (
     <QueryClientProvider client={TYPES.queryClient}>
-      <PaperProvider theme={theme}>
-        <App />
+      <PaperProvider theme={theme !== 'dark' ? darkTheme : lightTheme}>
+        <I18nProvider>
+          <App />
+        </I18nProvider>
       </PaperProvider>
     </QueryClientProvider>
   );

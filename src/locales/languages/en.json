@@ -1,0 +1,16 @@
+{
+  "APP_NAME": "Shop",
+"START": {
+"DESC": "Welcome to shop your application for your online store"
+},
+"COMMON": {
+"LOGIN": "Login",
+"REGISTER": "Already have an account"
+},
+  "BOTTOM_TAB": {
+    "DASHBOARD": "Home",
+    "FAVOURITE": "Favourite",
+    "PRODUCT": "Products",
+    "PROFILE": "Profile"
+  }
+}
