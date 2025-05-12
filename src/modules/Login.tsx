@@ -55,7 +55,11 @@ const LoginScreen = () => {
           >
             <Logo width={80} height={80} />
           </View>
-          <BaseText variant={TextVariant.EXTRA} weight={TextWeight.Bold}>
+          <BaseText
+            variant={TextVariant.EXTRA}
+            weight={TextWeight.Bold}
+            lineHeight={LineHeightType.extraLarge}
+          >
             {t('APP_NAME')}
           </BaseText>
 

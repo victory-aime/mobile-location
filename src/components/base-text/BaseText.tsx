@@ -13,15 +13,17 @@ interface BaseTextProps extends RNTextProps {
   weight?: TextWeight;
   lineHeight?: LineHeightType;
   style?: StyleProp<TextStyle>;
+  color?: string;
   children: React.ReactNode;
 }
 
 export const BaseText: React.FC<BaseTextProps> = ({
   variant = TextVariant.M,
   weight = TextWeight.Regular,
-  lineHeight = LineHeightType.extraLarge,
+  lineHeight = LineHeightType.medium,
   style,
   children,
+  color,
   ...props
 }) => {
   const theme = useTheme();
@@ -59,7 +61,6 @@ export const BaseText: React.FC<BaseTextProps> = ({
     [LineHeightType.mediumLarge]: 32,
     [LineHeightType.extraLarge]: 42,
     [LineHeightType.extraSmall]: 14,
-    [LineHeightType.extraSmall]: 14,
   };
 
   return (
@@ -69,7 +70,7 @@ export const BaseText: React.FC<BaseTextProps> = ({
           fontSize: sizeMap[variant],
           fontWeight: weightMap[weight],
           lineHeight: lineHeightMap[lineHeight],
-          color: theme.colors?.onSurface,
+          color: color ?? theme.colors?.onSurface,
         },
         style,
       ]}

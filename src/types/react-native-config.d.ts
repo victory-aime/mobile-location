@@ -8,6 +8,7 @@ declare module 'react-native-config' {
     TOKEN_ENDPOINT: string;
     END_SESSION: string;
     REDIRECT_CALLBACK_KEYCLOAK: string;
+    LOGOUT_CALLBACK: string;
   }
 
   export const Config: NativeConfig;

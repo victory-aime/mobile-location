@@ -16,12 +16,20 @@ export enum ButtonSizes {
   Large = 60,
 }
 
+export type CommonColorScheme =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'none';
+
 export interface BaseButtonProps extends ButtonProps {
   isLoading?: boolean;
   isDisabled?: boolean;
   mode?: ButtonVariants;
   size?: ButtonSizes;
-  colorsScheme?: string;
+  colorsScheme?: CommonColorScheme;
   children: TextProps['children'];
   style?: StyleProp<ViewStyle>;
   leftIcon?: React.ReactNode;

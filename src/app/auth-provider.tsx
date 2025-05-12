@@ -14,13 +14,12 @@ import {
   getTokenDataFromStorage,
 } from '../services/auth';
 import { globalApplicationContext } from './globalState';
-import { decodeJWT } from '../utils/jwt-decode';
-
+import { decodeJWT } from '_utils/jwt-decode';
 export type TokenData = {
   access_token: string;
   refresh_token: string;
   id_token: string;
-  keycloakId?: string;
+  keycloakId: string;
   expires_at: number;
 };
 
@@ -46,6 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       [StorageKeys.ACCESS_TOKEN_KEY, data.access_token],
       [StorageKeys.REFRESH_TOKEN_KEY, data.refresh_token],
       [StorageKeys.ID_TOKEN_KEY, data.id_token],
+      [StorageKeys.KEYCLOAK_ID, data.keycloakId],
       [StorageKeys.EXPIRES_AT_KEY, data.expires_at.toString()],
     ]);
     setTokenData(data);
@@ -76,6 +76,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       StorageKeys.ACCESS_TOKEN_KEY,
       StorageKeys.REFRESH_TOKEN_KEY,
       StorageKeys.ID_TOKEN_KEY,
+      StorageKeys.KEYCLOAK_ID,
       StorageKeys.EXPIRES_AT_KEY,
     ]);
     setTokenData(null);

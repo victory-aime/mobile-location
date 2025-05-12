@@ -30,6 +30,7 @@ export const BaseButton: FC<BaseButtonProps> = ({
     success: theme.colors.success,
     warning: theme.colors.warning,
     danger: theme.colors.error,
+    none: theme.colors.onSurface,
   };
 
   const resolvedColor = schemeColorMap[colorsScheme] || theme.colors.primary;

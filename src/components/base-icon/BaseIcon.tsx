@@ -20,6 +20,7 @@ export const BaseIcon: React.FC<BaseIconProps> = ({
     success: theme.colors.success,
     warning: theme.colors.warning,
     danger: theme.colors.error,
+    none: theme.colors.onSurface,
   };
 
   const bgColor = background ? schemeColorMap[colorsScheme] : 'transparent';

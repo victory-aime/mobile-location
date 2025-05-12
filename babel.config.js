@@ -6,12 +6,14 @@ module.exports = {
       'module-resolver',
       {
         root: ['./src'],
-        extensions: ['.ts', '.tsx', '.json'],
         alias: {
           _assets: './src/assets',
+          _app: './src/app/',
           _components: './src/components',
+          _locales: './src/locales',
           _hooks: './src/hooks',
           _navigations: './src/navigations',
+          _services: './src/services',
           _constants: './src/constants',
           _modules: './src/modules',
           _theme: './src/theme',

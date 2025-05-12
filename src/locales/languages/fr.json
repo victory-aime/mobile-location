@@ -5,7 +5,17 @@
   },
   "COMMON": {
     "LOGIN": "Se connecter",
-    "REGISTER": "Vous avez deja un compte "
+    "REGISTER": "Vous avez deja un compte",
+    "CANCEL": "Annuler",
+    "VALIDATE": "Valider",
+    "DECONNEXION": "Se deconnecter",
+    "HELLO": "Bonjour"
+  },
+  "AUTH": {
+    "LOGOUT": {
+      "TITLE": "Deconnexion",
+      "MESSAGE": "Voulez-vous vraiment vous deconnecter ?"
+    }
   },
   "BOTTOM_TAB": {
     "DASHBOARD": "Acceuil",

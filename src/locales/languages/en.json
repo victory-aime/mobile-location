@@ -1,12 +1,22 @@
 {
   "APP_NAME": "Shop",
-"START": {
-"DESC": "Welcome to shop your application for your online store"
-},
-"COMMON": {
-"LOGIN": "Login",
-"REGISTER": "Already have an account"
-},
+  "START": {
+    "DESC": "Welcome to shop your application for your online store"
+  },
+  "COMMON": {
+    "LOGIN": "Login",
+    "REGISTER": "Already have an account",
+    "CANCEL": "Cancel",
+    "VALIDATE": "Validate",
+    "DECONNEXION": "Logout",
+    "HELLO": "Good morning"
+  },
+  "AUTH": {
+    "LOGOUT": {
+      "TITLE": "Disconnect",
+      "MESSAGE": "Do you really want to disconnect?"
+    }
+  },
   "BOTTOM_TAB": {
     "DASHBOARD": "Home",
     "FAVOURITE": "Favourite",

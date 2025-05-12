@@ -4,9 +4,7 @@ export const lightColors = {
   success: '#06524C', // Vert
   warning: '#fd7e14', // Orange
   error: '#FF4423', // Rouge
-  background: '#ffffff',
   surface: '#ffffff',
-  text: '#000000',
   onPrimary: '#ffffff',
   onSurface: '#000000',
 };
@@ -17,9 +15,7 @@ export const darkColors = {
   success: '#06524C',
   warning: '#ff9800',
   error: '#f44336',
-  background: '#121212',
   surface: '#1e1e1e',
-  text: '#ffffff',
   onPrimary: '#ffffff',
   onSurface: '#ffffff',
 };
