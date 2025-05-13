@@ -78,13 +78,18 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.myrental"
-    defaultConfig {
-        applicationId "com.myrental"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-    }
+   defaultConfig {
+    applicationId "com.myrental"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+
+    manifestPlaceholders = [
+        appAuthRedirectScheme: "myapp"
+    ]
+}
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')

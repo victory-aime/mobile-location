@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { UsersModule } from 'bvg-innovation-state-management';
 import { useAuth } from '_app/auth-provider';
-import SafeAreaWrapper from '_components/SafeAreaWrapper';
+import { SafeAreaWrapper } from '_components/safe-area';
 import { AppRoute } from '_navigations/route/routes';
 import { DEVICE_WIDTH } from '_constants/dynamic';
 import { useNavigation } from '@react-navigation/native';

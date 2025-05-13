@@ -1,4 +1,4 @@
-import SafeAreaWrapper from '_components/SafeAreaWrapper.tsx';
+import { SafeAreaWrapper } from '_components/safe-area';
 import { BaseText } from '_components/base-text';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';

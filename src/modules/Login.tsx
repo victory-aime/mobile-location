@@ -3,7 +3,7 @@ import { useTheme } from 'react-native-paper';
 import { useAuth } from '../app/auth-provider';
 import { ChevronRight, Logo } from '_assets/svg';
 import { useTranslation } from 'react-i18next';
-import SafeAreaWrapper from '_components/SafeAreaWrapper';
+import { SafeAreaWrapper } from '_components/safe-area';
 import { BaseText, TextVariant, TextWeight } from '_components/base-text';
 import { LineHeightType } from '_components/base-text/interface/base-text';
 import { BaseButton } from '_components/base-button/BaseButton';
@@ -11,12 +11,14 @@ import { useState } from 'react';
 import { ButtonSizes } from '_components/base-button/interface/button';
 import { BaseIcon } from '_components/base-icon/BaseIcon';
 import { lightTheme } from '_theme/ThemeOverrides';
+import Config from 'react-native-config';
 
 const LoginScreen = () => {
   const { t } = useTranslation();
   const { login } = useAuth();
   const theme = useTheme();
   const [loading, setLoading] = useState<boolean>(false);
+  const { KEYCLOAK_ISSUER } = Config;
 
   const handleLogin = async () => {
     try {
@@ -29,6 +31,7 @@ const LoginScreen = () => {
       setLoading(false);
     }
   };
+  console.warn('url', KEYCLOAK_ISSUER);
   return (
     <SafeAreaWrapper
       style={{

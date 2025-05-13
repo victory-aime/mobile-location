@@ -1,18 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { View, ViewStyle, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from 'react-native-paper';
-
-interface SafeAreaWrapperProps {
-  children: ReactNode;
-  edges?: {
-    top?: boolean;
-    bottom?: boolean;
-    left?: boolean;
-    right?: boolean;
-  };
-  style?: ViewStyle;
-}
+import { SafeAreaWrapperProps } from '_components/safe-area/interface/safe-area.ts';
 
 const SafeAreaWrapper: React.FC<SafeAreaWrapperProps> = ({
   children,
